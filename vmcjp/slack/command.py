@@ -451,7 +451,7 @@ def aws_subnet(event):
     message_handler(msg_const.CIDR, event)
     write_event_db(
         event.get("db_url"), 
-        event.get("user_id", 
+        event.get("user_id"), 
         {
             "status": cmd_const.MGMT_CIDR, 
             "customer_subnet_id": event.get("response")

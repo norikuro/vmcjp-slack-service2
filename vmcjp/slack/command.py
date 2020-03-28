@@ -331,6 +331,7 @@ def num_hosts(event):
     #update num hosts and send AWS account menu
     list_aws_account(event)
     num_hosts = int(event.get("response"))
+    storage_capacity = None
     
     if event.get("storage_capacity") is not None:
         storage_capacity = event.get("storage_capacity")

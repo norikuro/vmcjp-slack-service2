@@ -1,0 +1,20 @@
+{
+  "attachments": 
+  [
+    {
+      "text": "How many hosts do you want to deploy.",
+      "fallback": "How many hosts do you want to deploy.",
+      "color": "#3AA3E3",
+      "attachment_type": "default",
+      "callback_id": "num_hosts",
+      "actions": [
+        {
+          "name": "num_hosts",
+          "text": "Select Number of hosts",
+          "type": "select",
+          "options": ""
+        }
+      ]
+    }
+  ]
+}

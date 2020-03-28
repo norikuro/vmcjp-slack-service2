@@ -1,0 +1,26 @@
+{
+  "attachments": 
+  [
+    {
+      "text": "Please select host instance type.",
+      "fallback": "Please select host instance type.",
+      "color": "#3AA3E3",
+      "attachment_type": "default",
+      "callback_id": "instance_type",
+      "actions": [
+        {
+          "name": "i3",
+          "text": "i3.metal",
+          "type": "button",
+          "value": "i3"
+        },
+        {
+          "name": "r5.metal",
+          "text": "r5.metal",
+          "type": "button",
+          "value": "r5"
+        }
+      ]
+    }
+  ]
+}

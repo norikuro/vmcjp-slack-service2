@@ -1,0 +1,20 @@
+{
+  "attachments": 
+  [
+    {
+      "text": "Please select region which you want to deploy sddc.",
+      "fallback": "Please select region.",
+      "color": "#3AA3E3",
+      "attachment_type": "default",
+      "callback_id": "aws_region",
+      "actions": [
+        {
+          "name": "region_list",
+          "text": "Select region",
+          "type": "select",
+          "options": ""
+        }
+      ]
+    }
+  ]
+}

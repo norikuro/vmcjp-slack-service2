@@ -1,0 +1,26 @@
+{
+  "attachments": 
+  [
+    {
+      "text": "Do you wish to proceed with it?",
+      "fallback": "Do you wish to proceed with it?",
+      "color": "#3AA3E3",
+      "attachment_type": "default",
+      "callback_id": "check_max_hosts",
+      "actions": [
+        {
+          "name": "yes",
+          "text": "Yes",
+          "type": "button",
+          "value": "yes"
+        },
+        {
+          "name": "no",
+          "text": "No",
+          "type": "button",
+          "value": "no"
+        }
+      ]
+    }
+  ]
+}

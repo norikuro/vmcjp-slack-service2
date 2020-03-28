@@ -1,0 +1,64 @@
+{
+  "attachments": 
+  [
+    {
+      "pretext": "Please confirm following configuration.",
+      "color": "#3AA3E3",
+      "fallback": "Please confirm...",
+      "attachment_type": "default",
+      "callback_id": "check_config",
+      "fields": [
+        {
+          "title": "SDDC name",
+          "value": "sddc_name",
+          "short": "true"
+        },
+        {
+          "title": "Number of hosts",
+          "value": "num_hosts",
+          "short": "true"
+        },
+        {
+          "title": "AWS account",
+          "value": "aws_account",
+          "short": "true"
+        },
+        {
+          "title": "AWS linked subnet",
+          "value": "customer_subnet_id",
+          "short": "true"
+        },
+        {
+          "title": "Region",
+          "value": "region",
+          "short": "true"
+        },
+        {
+          "title": "Management Network",
+          "value": "vpc_cidr",
+          "short": "true"
+        }
+      ]
+    },
+    {
+      "text": "Do you want to proceed?",
+      "color": "#3AA3E3",
+      "attachment_type": "default",
+      "callback_id": "check_config",
+      "actions": [
+        {
+          "name": "yes",
+          "text": "Yes",
+          "type": "button",
+          "value": "yes"
+        },
+        {
+          "name": "no",
+          "text": "No",
+          "type": "button",
+          "value": "no"
+        }
+      ]
+    }
+  ]
+}

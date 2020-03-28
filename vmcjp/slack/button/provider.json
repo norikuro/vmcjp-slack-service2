@@ -1,0 +1,52 @@
+{
+  "text": "Please select provider type.",
+  "attachments": 
+  [
+    {
+      "color": "#3AA3E3",
+      "attachment_type": "default",
+      "callback_id": "provider",
+      "fields": [
+        {
+          "title": "AWS",
+          "value": "You can deploy real SDDC on AWS's bare metal.",
+          "short": "true"
+        }
+      ]
+    },
+    {
+      "color": "#3AA3E3",
+      "attachment_type": "default",
+      "callback_id": "provider",
+      "fields": [
+        {
+          "title": "ZEROCLOUD",
+          "value": "You can deploy virtual SDDC which does not consume AWS's bare metal (NSX-V type, old VMC console).",
+          "short": "true"
+        }
+      ]
+    },
+    {
+      "color": "#3AA3E3",
+      "attachment_type": "default",
+      "callback_id": "provider",
+      "actions": [
+        {
+          "name": "provider_list",
+          "text": "Pick provider type",
+          "type": "select",
+          "options": [
+            {
+              "text": "AWS",
+              "value": "AWS"
+            },
+            {
+              "text": "ZEROCLOUD",
+              "value": "ZEROCLOUD"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

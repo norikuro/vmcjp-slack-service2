@@ -1,0 +1,29 @@
+{
+  "attachments": 
+  [
+    {
+      "text": "Please select SDDC size you want to deploy.",
+      "fallback": "Please select SDDC size you want to deploy.",
+      "color": "#3AA3E3",
+      "attachment_type": "default",
+      "callback_id": "sddc_size",
+      "actions": [
+        {
+          "name": "sddc_size_list",
+          "text": "Select sddc size",
+          "type": "select",
+          "options": [
+            {
+              "text": "medium",
+              "value": "medium"
+            },
+            {
+              "text": "large",
+              "value": "large"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

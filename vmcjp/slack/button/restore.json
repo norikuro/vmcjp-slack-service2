@@ -1,0 +1,70 @@
+{
+  "attachments": 
+  [
+    {
+      "pretext": "Please confirm following configuration.",
+      "fallback": "Please confirm.",
+      "color": "#3AA3E3",
+      "fallback": "You are able to choose Yes or No.",
+      "attachment_type": "default",
+      "callback_id": "restore_sddc",
+      "fields": [
+        {
+          "title": "Backed up date",
+          "value": "updated",
+          "short": "true"
+        },
+        {
+          "title": "SDDC name",
+          "value": "sddc_name",
+          "short": "true"
+        },
+        {
+          "title": "Number of hosts",
+          "value": "num_hosts",
+          "short": "true"
+        },
+        {
+          "title": "Management network CIDR",
+          "value": "vpc_cidr",
+          "short": "true"
+        },
+        {
+          "title": "AWS account",
+          "value": "aws_account",
+          "short": "true"
+        },
+        {
+          "title": "AWS linked subnet",
+          "value": "customer_subnet_id",
+          "short": "true"
+        },
+        {
+          "title": "Region",
+          "value": "region",
+          "short": "true"
+        }
+      ]
+    },
+    {
+      "text": "Do you want to proceed?",
+      "color": "#3AA3E3",
+      "attachment_type": "default",
+      "callback_id": "restore_sddc",
+      "actions": [
+        {
+          "name": "yes",
+          "text": "Yes",
+          "type": "button",
+          "value": "yes"
+        },
+        {
+          "name": "no",
+          "text": "No",
+          "type": "button",
+          "value": "no"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "attachments": 
+  [
+    {
+      "text": "The following sddc will be deleted, please check!!",
+      "fallback": "The following sddc will be deleted.",
+      "color": "#3AA3E3",
+      "attachment_type": "default",
+      "callback_id": "delete_confirmation",
+      "fields": [
+        {
+          "title": "SDDC name",
+          "value": "sddc_name",
+          "short": "true"
+        }
+      ]
+    },
+    {
+      "text": "Do you want to proceed?",
+      "color": "#3AA3E3",
+      "attachment_type": "default",
+      "callback_id": "delete_confirmation",
+      "actions": [
+        {
+          "name": "yes",
+          "text": "Yes",
+          "type": "button",
+          "value": "yes"
+        },
+        {
+          "name": "no",
+          "text": "No",
+          "type": "button",
+          "value": "no"
+        }
+      ]
+    }
+  ]
+}

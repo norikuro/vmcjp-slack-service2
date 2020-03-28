@@ -1,0 +1,20 @@
+{
+  "attachments": 
+  [
+    {
+      "text": "Please select aws account id which you want to link.",
+      "fallback": "Please select aws account.",
+      "color": "#3AA3E3",
+      "attachment_type": "default",
+      "callback_id": "aws_account",
+      "actions": [
+        {
+          "name": "account_list",
+          "text": "Select aws account",
+          "type": "select",
+          "options": ""
+        }
+      ]
+    }
+  ]
+}

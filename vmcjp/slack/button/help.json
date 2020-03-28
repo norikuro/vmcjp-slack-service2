@@ -1,0 +1,73 @@
+{
+  "attachments": 
+  [
+    {
+      "pretext": "You can use following messages for vmcjp app.",
+      "fallback": "Here is help.",
+      "color": "#3AA3E3",
+      "attachment_type": "default",
+      "callback_id": "help",
+      "fields": [
+        {
+          "title": "Register VMC Org and API token",
+          "value": "Type `register org` to register VMC Org ID and API token. This Org ID and token will stored in this system db. You need to register your Org ID and token at first if you want to use this slack app."
+        }
+      ]
+    },
+    {
+      "color": "#3AA3E3",
+      "attachment_type": "default",
+      "callback_id": "help",
+      "fields": [
+        {
+          "title": "Delete VMC Org ID and API token",
+          "value": "Type `delete org` to delete your token stored in this system db."
+        }
+      ]
+    },
+    {
+      "color": "#3AA3E3",
+      "attachment_type": "default",
+      "callback_id": "help",
+      "fields": [
+        {
+          "title": "Create SDDC",
+          "value": "Type `create sddc` to create sddc on this org.  You can create single or multi host sddc.  You can check results in #vmcjpdemo channel."
+        }
+      ]
+    },
+    {
+      "color": "#3AA3E3",
+      "attachment_type": "default",
+      "callback_id": "help",
+      "fields": [
+        {
+          "title": "Create SDDC on ZEROCLOUD",
+          "value": "Type `create zerocloud sddc` to create sddc on zerocloud.  This will deploy virtual SDDC and this type of sddc will not consume AWS's bare metal.  You can check results in #vmcjpdemo channel."
+        }
+      ]
+    },
+    {
+      "color": "#3AA3E3",
+      "attachment_type": "default",
+      "callback_id": "help",
+      "fields": [
+        {
+          "title": "Delete SDDC",
+          "value": "Type `delete sddc` to delete sddc from this org.  You can delete only the sddc which you created.  You can check results in #vmcjpdemo channel."
+        }
+      ]
+    },
+    {
+      "color": "#3AA3E3",
+      "attachment_type": "default",
+      "callback_id": "help",
+      "fields": [
+        {
+          "title": "List SDDCs",
+          "value": "Type `list sddcs` to list sddc which deployed on VMC JP SET org."
+        }
+      ]
+    }
+  ]
+}

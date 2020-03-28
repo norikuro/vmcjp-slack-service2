@@ -1,0 +1,41 @@
+{
+  "attachments": 
+  [
+    {
+      "text": "Please select Elastic VSAN capacity per host.",
+      "fallback": "Please select Elastic VSAN capacity per host.",
+      "color": "#3AA3E3",
+      "attachment_type": "default",
+      "callback_id": "storage_capacity",
+      "actions": [
+        {
+          "name": "storage_capacity",
+          "text": "Select storage capacity",
+          "type": "select",
+          "options": [
+            {
+              "text": "15TB",
+              "value": 15003
+            },
+            {
+              "text": "20TB",
+              "value": 20004
+            },
+            {
+              "text": "25TB",
+              "value": 25005
+            },
+            {
+              "text": "30TB",
+              "value": 30006
+            },
+            {
+              "text": "35TB",
+              "value": 35007
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

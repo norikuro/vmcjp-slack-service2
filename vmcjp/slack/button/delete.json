@@ -1,0 +1,20 @@
+{
+  "attachments": 
+  [
+    {
+      "text": "Please select SDDC which you want to delete.",
+      "fallback": "Please select SDDC.",
+      "color": "#3AA3E3",
+      "attachment_type": "default",
+      "callback_id": "selected_sddc_to_delete",
+      "actions": [
+        {
+          "name": "delete_sddc",
+          "text": "Select SDDC",
+          "type": "select",
+          "options": ""
+        }
+      ]
+    }
+  ]
+}

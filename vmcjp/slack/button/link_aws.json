@@ -1,0 +1,26 @@
+{
+  "attachments": 
+  [
+    {
+      "text": "Do you want to connect AWS?",
+      "fallback": "Do you want to connect AWS?",
+      "color": "#3AA3E3",
+      "attachment_type": "default",
+      "callback_id": "link_aws",
+      "actions": [
+        {
+          "name": "yes",
+          "text": "Yes",
+          "type": "button",
+          "value": "True"
+        },
+        {
+          "name": "no",
+          "text": "No",
+          "type": "button",
+          "value": "False"
+        }
+      ]
+    }
+  ]
+}

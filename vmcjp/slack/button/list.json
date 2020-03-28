@@ -1,0 +1,33 @@
+{
+  "attachments": 
+  [
+    {
+      "fallback": "Here is sddc list",
+      "color": "#3AA3E3",
+      "attachment_type": "default",
+      "callback_id": "list_sddcs",
+      "fields": [
+        {
+          "title": "SDDC name",
+          "value": "sddc_name",
+          "short": "true"
+        },
+        {
+          "title": "Created user",
+          "value": "user_name",
+          "short": "true"
+        },
+        {
+          "title": "Created date",
+          "value": "created",
+          "short": "true"
+        },
+        {
+          "title": "Number of hosts",
+          "value": "num_hosts",
+          "short": "true"
+        }
+      ]
+    }
+  ]
+}

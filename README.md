@@ -1,0 +1,1 @@
+# vmcjp-slack-service2

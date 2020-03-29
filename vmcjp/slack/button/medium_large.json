@@ -2,15 +2,15 @@
   "attachments": 
   [
     {
-      "text": "Which size of SDDC do you want to deploy, mideum(default) or large?",
-      "fallback": "Medeum SDDC or large SDDC?",
+      "text": "Which size do you want to deplly, default size SDDC or large size SDDC?",
+      "fallback": "Default SDDC or large SDDC?",
       "color": "#3AA3E3",
       "attachment_type": "default",
       "callback_id": "medium_large",
       "actions": [
         {
           "name": "medium",
-          "text": "Medium SDDC",
+          "text": "Default SDDC",
           "type": "button",
           "value": "medium"
         },

@@ -54,6 +54,7 @@ def call_lambda_sync(function, data):
     logging.info(body)
     
     error = response.get("FunctionError")
+    logging.info("!!! error={}".format(error))
     if error is None:
         return body
     elif error is not None and body.get("errorMessage") is not None:

@@ -12,7 +12,7 @@
           "name": "default",
           "text": "Default SDDC",
           "type": "button",
-          "value": "default"
+          "value": "medium"
         },
         {
           "name": "large",

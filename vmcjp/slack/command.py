@@ -123,6 +123,7 @@ def create_sddc(event):
     max_hosts = call_lambda_sync(
         "slack_vmc", data
     )
+    max_hosts = 10 #for test
     event.update({"max_hosts": max_hosts})
     if max_hosts < 1:
         message_handler(msg_const.NOT_ENOUGH, event)

@@ -21,16 +21,25 @@ def call_lambda(function, data):
     )
 
 def call_lambda_async(function, data):
-    s = Session()
-    clientLambda = s.create_client(
-        "lambda", 
-        config=Config(retries={'max_attempts': 0})
-    )
-    clientLambda.invoke(
+    config = Config(retries={'max_attempts': 0})
+    client = boto3.client("lambda", config=config)
+    
+    client.invoke(
         FunctionName=function,
         InvocationType="Event",
         Payload=json.dumps(data)
     )
+    
+#    s = Session()
+#    clientLambda = s.create_client(
+#        "lambda", 
+#        config=Config(retries={'max_attempts': 0})
+#    )
+#    clientLambda.invoke(
+#        FunctionName=function,
+#        InvocationType="Event",
+#        Payload=json.dumps(data)
+#    )
 
 def call_lambda_sync(function, data):
     client = boto3.client("lambda")

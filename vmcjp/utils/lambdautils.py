@@ -58,3 +58,5 @@ def call_lambda_sync(function, data):
         return body
     elif error is not None and body.get("errorMessage") is not None:
         raise Exception(body.get("errorMessage"))
+    else:
+        raise Exception("Something wrong!!")

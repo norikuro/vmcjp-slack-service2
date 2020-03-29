@@ -1,12 +1,12 @@
 import json
 import boto3
-#import logging
+import logging
 
 #from botocore.session import Session
 from botocore.config import Config
 
-#logger = logging.getLogger()
-#logger.setLevel(logging.INFO)
+logger = logging.getLogger()
+logger.setLevel(logging.INFO)
 
 #def call_lambda(function, data):
 #    s = Session()
@@ -49,11 +49,12 @@ def call_lambda_sync(function, data):
         InvocationType="RequestResponse",
         Payload=json.dumps(data)
     )
-#    logging.info(response)
+    logging.info(response)
     body = json.loads(response['Payload'].read())
-#    logging.info(body)
+    logging.info(body)
     
     error = response.get("FunctionError")
+    logging.info("!!! erro = {}".format(error))
     if error is None:
         return body
     elif error is not None and body.get("errorMessage") is not None:

@@ -9,10 +9,10 @@
       "callback_id": "medium_large",
       "actions": [
         {
-          "name": "medium",
+          "name": "default",
           "text": "Default SDDC",
           "type": "button",
-          "value": "medium"
+          "value": "default"
         },
         {
           "name": "large",

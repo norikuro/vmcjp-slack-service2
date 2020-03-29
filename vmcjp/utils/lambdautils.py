@@ -1,8 +1,12 @@
 import json
 import boto3
+import logging
 
 from botocore.session import Session
 from botocore.config import Config
+
+logger = logging.getLogger()
+logger.setLevel(logging.INFO)
 
 def call_lambda(function, data):
     s = Session()
@@ -40,6 +44,7 @@ def call_lambda_sync(function, data):
         InvocationType="RequestResponse",
         Payload=json.dumps(data)
     )
+    logging.info(response)
 #    response = clientLambda.invoke(
 #        FunctionName=function,
 #        InvocationType="RequestResponse",

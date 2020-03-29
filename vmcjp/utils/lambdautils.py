@@ -51,4 +51,5 @@ def call_lambda_sync(function, data):
 #        Payload=json.dumps(data)
 #    )
     body = json.loads(response['Payload'].read())
+    logging.info(body)
     return body

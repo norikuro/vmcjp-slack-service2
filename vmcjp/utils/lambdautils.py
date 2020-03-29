@@ -38,7 +38,7 @@ def call_lambda_sync(function, data):
 #        "lambda", 
 #        config=Config(retries={'max_attempts': 0})
 #    )
-    lambda = boto3.client('lambda')
+    lambda = boto3.client("lambda")
     response = client.invoke(
         FunctionName=function,
         InvocationType="RequestResponse",

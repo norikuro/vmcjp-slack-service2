@@ -54,6 +54,7 @@ class _const:
   RESTORE = "restore_message"
   CANCEL_RESTORE = "cancel_sddc_restoration_message"
   CHECK_RESULT = "check_result_message"
+  ERROR = "error_message"
 
   class ConstError(TypeError):
     pass

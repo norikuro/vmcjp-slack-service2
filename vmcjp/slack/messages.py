@@ -406,3 +406,7 @@ def check_result_message(event):
         event, 
         event.get("check_result")
     )
+
+def error_message(event):
+    text = event.get("text")
+    response = post_text_with_bot_token(event, text)

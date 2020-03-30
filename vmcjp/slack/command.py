@@ -84,14 +84,18 @@ def delete_org(event):
 def list_sddcs(event):
     message_handler(msg_const.SDDCS_TXT, event)
     data = prepare_data_for_lambda(event, "list_sddcs")
-    event.update(
-        {
-            "sddcs": call_lambda_sync(
-                "slack_vmc", data
-            )
-        }
-    )
-    message_handler(msg_const.SDDCS_MSG, event)
+    try:
+        event.update(
+            {
+                "sddcs": call_lambda_sync(
+                    "slack_vmc", data
+                )
+            }
+        )
+        message_handler(msg_const.SDDCS_MSG, event)
+    except Exception as e:
+        event.update({"text": e.message})
+        message_handler(msg_const.ERROR, event)
 
 #def create_zero_sddc(event, db): #for internal test only
 #    message_handler(msg_const.SDDC_WIZARD, event)

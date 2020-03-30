@@ -57,10 +57,10 @@ def register_token(event):
         "token": event.get("text"),
         "org_id": event.get("org_id")
     }
-    user_name = call_lambda_sync(
-        "slack_vmc", data
-    )
-    if user_name is not None:
+    try:
+        user_name = call_lambda_sync(
+            "slack_vmc", data
+        )
         message_handler(msg_const.SUCCESS_TOKEN, event)
         write_cred_db(
             event.get("db_url"),
@@ -71,8 +71,9 @@ def register_token(event):
                 "user_name": user_name
             }
         )
-    else:
+    except Exception as e:
         message_handler(msg_const.FAILED_TOKEN, event)
+        event.update({"text": e.message})
         message_handler(msg_const.WRONG_TOKEN, event)
         delete_cred_db(event.get("db_url"), event.get("user_id"))
 

@@ -95,11 +95,11 @@ def list_sddcs(event):
         )
         message_handler(msg_const.SDDCS_MSG, event)
     except Exception as e:
-        logging.info("!!! exception {}".format(e))
+        logging.info("!!! exception {}".format(str(e)))
 #        logging.info("!!! exception {}".format(e.message))
 #        logging.info("!!! exception type {}".format(type(e)))
-        get_members(e)
-        event.update({"text": e.message})
+#        get_members(e)
+        event.update({"text": str(e)})
         message_handler(msg_const.ERROR, event)
 
 #def create_zero_sddc(event, db): #for internal test only

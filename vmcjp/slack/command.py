@@ -1,13 +1,13 @@
 import ipaddress
-#import logging
+import logging
 
 from vmcjp.utils import msg_const, cmd_const
 from vmcjp.slack.messages import message_handler
 from vmcjp.utils.lambdautils import call_lambda_sync
 from vmcjp.slack.db import read_cred_db, write_cred_db, delete_cred_db, write_event_db, delete_event_db
 
-#logger = logging.getLogger()
-#logger.setLevel(logging.INFO)
+logger = logging.getLogger()
+logger.setLevel(logging.INFO)
 
 def command_handler(cmd, event):
     eval(cmd)(event)
@@ -94,6 +94,7 @@ def list_sddcs(event):
         )
         message_handler(msg_const.SDDCS_MSG, event)
     except Exception as e:
+        logging.info(e)
         event.update({"text": e.message})
         message_handler(msg_const.ERROR, event)
 

@@ -25,12 +25,8 @@ def call_lambda_sync(function, data):
         InvocationType="RequestResponse",
         Payload=json.dumps(data)
     )
-#    logging.info(response)
     body = json.loads(response['Payload'].read())
-#    logging.info("!!! response {}".format(response))
-#    logging.info("!!! body {}".format(body))
     if isinstance(body, dict) and body.get("errorMessage") is not None:
-#        logging.info("!!! errMessage {}".format(body.get("errorMessage")))
         raise Exception(body.get("errorMessage"))
     else:
         return body

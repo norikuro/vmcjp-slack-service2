@@ -95,6 +95,7 @@ def list_sddcs(event):
         message_handler(msg_const.SDDCS_MSG, event)
     except Exception as e:
         logging.info("!!! exception {}".format(e))
+        logging.info("!!! exception {}".format(e.message))
         logging.info("!!! exception type {}".format(type(e)))
         event.update({"text": e.message})
         message_handler(msg_const.ERROR, event)

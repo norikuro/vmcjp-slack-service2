@@ -1,14 +1,13 @@
 import ipaddress
-import logging
+#import logging
 
-from vmcjp.utils.metadata import get_members
 from vmcjp.utils import msg_const, cmd_const
 from vmcjp.slack.messages import message_handler
 from vmcjp.utils.lambdautils import call_lambda_sync
 from vmcjp.slack.db import read_cred_db, write_cred_db, delete_cred_db, write_event_db, delete_event_db
 
-logger = logging.getLogger()
-logger.setLevel(logging.INFO)
+#logger = logging.getLogger()
+#logger.setLevel(logging.INFO)
 
 def command_handler(cmd, event):
     eval(cmd)(event)
@@ -74,7 +73,7 @@ def register_token(event):
         )
     except Exception as e:
         message_handler(msg_const.FAILED_TOKEN, event)
-        event.update({"text": e.message})
+        event.update({"text": str(e)})
         message_handler(msg_const.WRONG_TOKEN, event)
         delete_cred_db(event.get("db_url"), event.get("user_id"))
 
@@ -83,7 +82,6 @@ def delete_org(event):
     delete_cred_db(event.get("db_url"), event.get("user_id"))
 
 def list_sddcs(event):
-    message_handler(msg_const.SDDCS_TXT, event)
     data = prepare_data_for_lambda(event, "list_sddcs")
     try:
         event.update(
@@ -93,12 +91,9 @@ def list_sddcs(event):
                 )
             }
         )
+        message_handler(msg_const.SDDCS_TXT, event)
         message_handler(msg_const.SDDCS_MSG, event)
     except Exception as e:
-        logging.info("!!! exception {}".format(str(e)))
-#        logging.info("!!! exception {}".format(e.message))
-#        logging.info("!!! exception type {}".format(type(e)))
-#        get_members(e)
         event.update({"text": str(e)})
         message_handler(msg_const.ERROR, event)
 

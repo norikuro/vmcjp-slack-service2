@@ -1,11 +1,11 @@
 import json
 import boto3
-#import logging
+import logging
 
 from botocore.config import Config
 
-#logger = logging.getLogger()
-#logger.setLevel(logging.INFO)
+logger = logging.getLogger()
+logger.setLevel(logging.INFO)
 
 def call_lambda_async(function, data):
     config = Config(retries={'max_attempts': 0})
@@ -25,10 +25,10 @@ def call_lambda_sync(function, data):
         InvocationType="RequestResponse",
         Payload=json.dumps(data)
     )
-#    logging.info(response)
+    logging.info(response)
     body = json.loads(response['Payload'].read())
-#    logging.info(body)
-#    logging.info("!!! isntance {}".format(isinstance(body, dict)))
+    logging.info(body)
+    logging.info("!!! isntance {}".format(isinstance(body, dict)))
     if isinstance(body, dict) and body.get("errorMessage") is not None:
         raise Exception(body.get("errorMessage"))
     else:

@@ -408,5 +408,5 @@ def check_result_message(event):
     )
 
 def error_message(event):
-    text = event.get("text")
+    text = "Sorry ,got error, {}".format(event.get("text"))
     response = post_text_with_bot_token(event, text)

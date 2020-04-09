@@ -529,13 +529,6 @@ def is_valid_network(address):
 def check_config(event):
     if "yes" in event.get("response"):
         message_handler(msg_const.CREATE, event)
-        write_event_db(
-            event.get("db_url"),
-            event.get("user_id"),
-            {
-                "status": "creating", 
-            }
-        )
         event.update({"vmc_command": "create_sddc"})
         try:
             task_id = call_lambda_sync("slack_vmc", event)
@@ -556,6 +549,13 @@ def check_config(event):
             message_handler(msg_const.TASK_WH, event)
             event.update(
                 {"status": "task_started"}
+            )
+            write_event_db(
+                event.get("db_url"),
+                event.get("user_id"),
+                {
+                    "status": "creating", 
+                }
             )
             call_lambda_async("check_task", event)
     else:

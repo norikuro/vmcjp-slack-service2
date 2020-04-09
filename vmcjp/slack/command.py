@@ -537,7 +537,27 @@ def check_config(event):
             }
         )
         event.update({"vmc_command": "create_sddc"})
-        call_lambda_sync("slack_vmc", event)
+        try:
+            task_id = call_lambda_sync("slack_vmc", event)
+        except Exception as e:
+            event.update(
+                {
+                    "message": "Sorry, failed to create sddc.  {}".format(str(e)),
+#                    "text": str(e),
+#                    "status": "task_failed"
+                }
+            )
+            message_handler(msg_const.SDDC_RESULT, event)
+            delete_event_db(event.get("db_url"), event.get("user_id"))
+        else:
+            event.update({"task_id": task_id})
+            message_handler(msg_const.TASK_MSG, event)
+            message_handler(msg_const.CRUD_SDDC, event)
+            message_handler(msg_const.TASK_WH, event)
+            event.update(
+                {"status": "task_started"}
+            )
+#            call_lambda("check_task", event)
     else:
         message_handler(msg_const.CANCEL_SDDC, event)
         delete_event_db(event.get("db_url"), event.get("user_id"))

@@ -3,7 +3,7 @@ import ipaddress
 
 from vmcjp.utils import msg_const, cmd_const
 from vmcjp.slack.messages import message_handler
-from vmcjp.utils.lambdautils import call_lambda_sync
+from vmcjp.utils.lambdautils import call_lambda_sync, call_lambda_async
 from vmcjp.slack.db import read_cred_db, write_cred_db, delete_cred_db, write_event_db, delete_event_db
 
 #logger = logging.getLogger()

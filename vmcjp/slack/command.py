@@ -536,7 +536,7 @@ def check_config(event):
                 "status": "creating", 
             }
         )
-        event.update("vmc_command": "create_sddc")
+        event.update({"vmc_command": "create_sddc"})
         call_lambda_sync("slack_vmc", event)
     else:
         message_handler(msg_const.CANCEL_SDDC, event)

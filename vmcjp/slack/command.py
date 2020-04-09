@@ -562,7 +562,29 @@ def check_config(event):
         message_handler(msg_const.CANCEL_SDDC, event)
         delete_event_db(event.get("db_url"), event.get("user_id"))
 
-#def delete_sddc(event, db):
+def delete_sddc(event, db):
+    data = prepare_data_for_lambda(event, "list_sddcs_name_id")
+    try:
+        event.update(
+            {
+                "option_list": call_lambda_sync(
+                    "slack_vmc", data
+                )
+            }
+        )
+    except Exception as e:
+        event.update({"text": str(e)})
+        message_handler(msg_const.ERROR, event)
+    else:
+        message_handler(msg_const.DELETE_SDDC, event)
+        write_event_db(
+            event.get("db_url"), 
+            event.get("user_id"), 
+            {
+                "command": cmd_const.COMMAND_SDDC[event.get("text")],
+                "status": cmd_const.DELETE_SDDC
+            }
+        )
 #    event.update(
 #        {
 #            "option_list": list_sddcs__(

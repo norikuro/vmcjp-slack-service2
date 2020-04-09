@@ -544,9 +544,6 @@ def check_config(event):
             delete_event_db(event.get("db_url"), event.get("user_id"))
         else:
             event.update({"task_id": task_id})
-            message_handler(msg_const.TASK_MSG, event)
-            message_handler(msg_const.CRUD_SDDC, event)
-            message_handler(msg_const.TASK_WH, event)
             event.update(
                 {"status": "task_started"}
             )
@@ -558,6 +555,9 @@ def check_config(event):
                 }
             )
             call_lambda_async("check_task", event)
+            message_handler(msg_const.TASK_MSG, event)
+            message_handler(msg_const.CRUD_SDDC, event)
+            message_handler(msg_const.TASK_WH, event)
     else:
         message_handler(msg_const.CANCEL_SDDC, event)
         delete_event_db(event.get("db_url"), event.get("user_id"))

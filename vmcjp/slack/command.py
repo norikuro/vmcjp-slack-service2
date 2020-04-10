@@ -544,9 +544,11 @@ def check_config(event):
             message_handler(msg_const.SDDC_RESULT, event)
             delete_event_db(event.get("db_url"), event.get("user_id"))
         else:
-            event.update({"task_id": task_id})
             event.update(
-                {"status": "task_started"}
+                {
+                    "task_id": task_id, 
+                    "status": "task_started"
+                }
             )
             write_event_db(
                 event.get("db_url"),

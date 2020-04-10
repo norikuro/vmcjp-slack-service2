@@ -562,7 +562,7 @@ def check_config(event):
         message_handler(msg_const.CANCEL_SDDC, event)
         delete_event_db(event.get("db_url"), event.get("user_id"))
 
-def delete_sddc(event, db):
+def delete_sddc(event):
     data = prepare_data_for_lambda(event, "list_sddcs_name_id")
     try:
         event.update(

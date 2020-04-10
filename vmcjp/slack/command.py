@@ -631,6 +631,9 @@ def delete_confirmation(event):
 #        )
     
         if check_sddc_user(event):
+            event.update(
+                {"status": "task_started"}
+            )
             call_lambda_async("delete_sddc", event)
         else:
             message_handler(msg_const.CANT_DELETE, event)

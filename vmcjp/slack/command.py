@@ -590,22 +590,6 @@ def delete_sddc(event):
                 "status": cmd_const.DELETE_SDDC
             }
         )
-#    event.update(
-#        {
-#            "option_list": list_sddcs__(
-#                event.get("token"), 
-#                event.get("org_id")
-#            )
-#        }
-#    )
-#    message_handler(msg_const.DELETE_SDDC, event)
-#    db.write_event_db(
-#        event.get("user_id"),
-#        {
-#            "command": cmd_const.COMMAND_SDDC[event.get("text")],
-#            "status": cmd_const.DELETE_SDDC
-#        }
-#    )
     
 def selected_sddc_to_delete(event):
     sddc_name = event.get("response").split("+")[0]

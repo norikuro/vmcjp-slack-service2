@@ -615,7 +615,8 @@ def selected_sddc_to_delete(event):
         event.get("user_id"),
         {
             "sddc_name": sddc_name,
-            "sddc_id": sddc_id
+#            "sddc_id": sddc_id
+            "sddc_id": "ffcdc226-c3a6-4c8c-bc9b-3b14de2e089c"
         }
     )
     message_handler(msg_const.CONFIRM_DELETE, event)

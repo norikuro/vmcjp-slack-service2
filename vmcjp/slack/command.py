@@ -649,7 +649,10 @@ def delete_confirmation(event):
 
 def check_sddc_user(event):
     data = prepare_data_for_lambda(event, "get_sddc_user")
+    data.update({"sddc_id": event.get("sddc_id")})
+    
     user = call_lambda_sync("slack_vmc", data)
+    
     if user == event.get("user_name"):
         return True
     else:

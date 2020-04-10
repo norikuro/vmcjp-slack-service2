@@ -628,12 +628,7 @@ def delete_confirmation(event):
 #        event.update(
 #            {"user_name": event.get("user_name")}
 #        )
-        if check_sddc_user(
-            event.get("token"),
-            event.get("org_id"),
-            event.get("sddc_id"),
-            event.get("user_name")
-        ):
+        if check_sddc_user(event):
             call_lambda_async("delete_sddc", event)
         else:
             message_handler(msg_const.CANT_DELETE, event)

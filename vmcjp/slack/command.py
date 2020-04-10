@@ -640,7 +640,27 @@ def delete_confirmation(event):
                     "lambda_name": "check_task"
                 }
             )
-            call_lambda_async("delete_sddc", event)
+            try:
+                task_id = call_lambda_async("delete_sddc", event)
+            except Exception as e:
+                event.update(
+                    {
+                        "message": "Sorry, failed to delete sddc.  {}".format(str(e)),
+#                        "status": "task_failed"
+                    }
+                )
+                message_handler(msg_const.SDDC_RESULT, event)
+                delete_event_db(event.get("db_url"), event.get("user_id"))
+            else:
+                event.update(
+                    {
+                        "status": "task_started"
+                    }
+                )
+                call_lambda_async("check_task", event)
+                message_handler(constant.TASK_MSG, event)
+                message_handler(constant.CRUD_SDDC, event)
+                message_handler(constant.TASK_WH, event)
         else:
             message_handler(msg_const.CANT_DELETE, event)
             delete_event_db(

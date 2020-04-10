@@ -529,12 +529,8 @@ def is_valid_network(address):
 def check_config(event):
     if "yes" in event.get("response"):
         message_handler(msg_const.CREATE, event)
-        event.update(
-            {
-                "vmc_command": "create_sddc",
-                "lambda_name": "check_task"
-            }
-        )
+        event.update({"vmc_command": "create_sddc"})
+        
         try:
             task_id = call_lambda_sync("slack_vmc", event)
         except Exception as e:
@@ -563,6 +559,7 @@ def check_config(event):
             message_handler(msg_const.TASK_MSG, event)
             message_handler(msg_const.CRUD_SDDC, event)
             message_handler(msg_const.TASK_WH, event)
+            
     else:
         message_handler(msg_const.CANCEL_SDDC, event)
         delete_event_db(event.get("db_url"), event.get("user_id"))

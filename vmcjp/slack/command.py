@@ -607,42 +607,49 @@ def delete_sddc(event):
 #        }
 #    )
     
-#def selected_sddc_to_delete(event, db):
-#    sddc_name = event.get("response").split("+")[0]
-#    sddc_id = event.get("response").split("+")[1]
-#    event.update(
-#        {"sddc_name": sddc_name}
-#    )
-#    db.write_event_db(
-#        event.get("user_id"),
-#        {
-#            "sddc_name": sddc_name,
-#            "sddc_id": sddc_id
-#        }
-#    )
-#    message_handler(msg_const.CONFIRM_DELETE, event)
+def selected_sddc_to_delete(event):
+    sddc_name = event.get("response").split("+")[0]
+    sddc_id = event.get("response").split("+")[1]
+    event.update(
+        {"sddc_name": sddc_name}
+    )
+    write_event_db(
+        event.get("db_url"),
+        event.get("user_id"),
+        {
+            "sddc_name": sddc_name,
+            "sddc_id": sddc_id
+        }
+    )
+    message_handler(msg_const.CONFIRM_DELETE, event)
 
-#def delete_confirmation(event, db):
-#    response = event.get("response")
-#    if "yes" in response:
-#        message_handler(msg_const.START_DELETE, event)
-##        event.update(result)
-#        event.update(
-#            {"user_name": event.get("user_name")}
-#        )
-#        if check_sddc_user(
-#            event.get("token"),
-#            event.get("org_id"),
-#            event.get("sddc_id"),
-#            event.get("user_name")
-#        ):
-#            call_lambda("delete_sddc", event)
-#        else:
-#            message_handler(msg_const.CANT_DELETE, event)
-#            db.delete_event_db(event.get("user_id"))
-#    else:
-#        message_handler(msg_const.CANCEL_DELETE, event)
-#        db.delete_event_db(event.get("user_id"))
+def delete_confirmation(event):
+    response = event.get("response")
+    if "yes" in response:
+        message_handler(msg_const.START_DELETE, event)
+#        event.update(result)
+        event.update(
+            {"user_name": event.get("user_name")}
+        )
+        if check_sddc_user(
+            event.get("token"),
+            event.get("org_id"),
+            event.get("sddc_id"),
+            event.get("user_name")
+        ):
+            call_lambda_async("delete_sddc", event)
+        else:
+            message_handler(msg_const.CANT_DELETE, event)
+            delete_event_db(
+                event.get("db_url"), 
+                event.get("user_id")
+            )
+    else:
+        message_handler(msg_const.CANCEL_DELETE, event)
+        delete_event_db(
+            event.get("db_url"), 
+            event.get("user_id")
+        )
 
 #def restore_sddc(event, db): #for internal only
 #    hoge = 1

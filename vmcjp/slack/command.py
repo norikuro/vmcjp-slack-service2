@@ -635,7 +635,10 @@ def delete_confirmation(event):
     
         if check_sddc_user(event):
             event.update(
-                {"status": "task_started"}
+                {
+                    "status": "task_started", 
+                    "lambda_name": "check_task"
+                }
             )
             call_lambda_async("delete_sddc", event)
         else:

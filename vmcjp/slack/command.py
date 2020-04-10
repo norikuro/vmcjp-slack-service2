@@ -547,7 +547,8 @@ def check_config(event):
             event.update(
                 {
                     "task_id": task_id, 
-                    "status": "task_started"
+                    "status": "task_started", 
+                    "lambda_name": "check_task"
                 }
             )
             write_event_db(

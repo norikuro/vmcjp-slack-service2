@@ -658,9 +658,9 @@ def delete_confirmation(event):
                     }
                 )
                 call_lambda_async("check_task", event)
-                message_handler(constant.TASK_MSG, event)
-                message_handler(constant.CRUD_SDDC, event)
-                message_handler(constant.TASK_WH, event)
+                message_handler(msg_const.TASK_MSG, event)
+                message_handler(msg_const.CRUD_SDDC, event)
+                message_handler(msg_const.TASK_WH, event)
         else:
             message_handler(msg_const.CANT_DELETE, event)
             delete_event_db(

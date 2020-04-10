@@ -612,10 +612,6 @@ def delete_confirmation(event):
     response = event.get("response")
     if "yes" in response:
         message_handler(msg_const.START_DELETE, event)
-#        event.update(result)
-#        event.update(
-#            {"user_name": event.get("user_name")}
-#        )
     
         if check_sddc_user(event):
             event.update(

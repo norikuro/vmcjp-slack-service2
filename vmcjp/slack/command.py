@@ -217,9 +217,19 @@ def sddc_name(event):
 def medium_large(event):
     max_hosts = event.get("max_hosts")
     
+    data = {
+        "status": status, 
+        "size": event.get("response")
+    }
+    
     if max_hosts == 1:
         message_handler(msg_const.LINK_AWS, event)
         status = cmd_const.AWS_ACCOUNT
+        data.update(
+            {
+                "host_instance_type": "I3_METAL"
+            }
+        )
     elif max_hosts < 6:
         message_handler(msg_const.SINGLE_MULTI, event)
         status = cmd_const.SINGLE_MULTI
@@ -230,10 +240,7 @@ def medium_large(event):
     write_event_db(
         event.get("db_url"), 
         event.get("user_id"), 
-        {
-            "status": status, 
-            "size": event.get("response")
-        }
+        data
     )
 
 def single_multi(event):

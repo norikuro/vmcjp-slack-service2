@@ -219,24 +219,34 @@ def medium_large(event):
     max_hosts = event.get("max_hosts")
     
     data = {
-        "status": status, 
         "size": event.get("response")
     }
     
     if max_hosts == 1:
         message_handler(msg_const.LINK_AWS, event)
-        status = cmd_const.AWS_ACCOUNT
+#        status = cmd_const.AWS_ACCOUNT
         data.update(
             {
+                "status": cmd_const.AWS_ACCOUNT,
                 "host_instance_type": "I3_METAL"
             }
         )
     elif max_hosts < 6:
         message_handler(msg_const.SINGLE_MULTI, event)
-        status = cmd_const.SINGLE_MULTI
+#        status = cmd_const.SINGLE_MULTI
+        data.update(
+            {
+                "status": cmd_const.SINGLE_MULTI
+            }
+        )
     else:
         message_handler(msg_const.STRETCH, event)
-        status = cmd_const.SINGLE_MULTI
+#        status = cmd_const.SINGLE_MULTI
+        data.update(
+            {
+                "status": cmd_const.SINGLE_MULTI
+            }
+        )
     
     write_event_db(
         event.get("db_url"), 

@@ -357,7 +357,6 @@ def num_hosts(event):
         {
             "status": cmd_const.AWS_ACCOUNT, 
             "num_hosts": num_hosts, 
-            "link_aws": "True",
             "storage_capacity": storage_capacity
         }
     )

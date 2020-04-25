@@ -129,7 +129,7 @@ def create_sddc(event):
         "slack_vmc", data
     )
 #    max_hosts = 10 #for test
-    max_hosts = 1 #for test
+    max_hosts = 5 #for test
     event.update({"max_hosts": max_hosts})
     if max_hosts < 1:
         message_handler(msg_const.NOT_ENOUGH, event)

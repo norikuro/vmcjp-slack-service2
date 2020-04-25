@@ -244,7 +244,8 @@ def single_multi(event):
             event.get("db_url"),
             event.get("user_id"),
             {
-                "status": cmd_const.LINK_AWS
+                "status": cmd_const.LINK_AWS, 
+                "host_instance_type": "I3_METAL"
             }
         )
     elif "multi" in event.get("response"):
